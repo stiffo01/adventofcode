@@ -1,21 +1,32 @@
 "Day 4"
+#rock paper sissors game for advent of code day 4
+
 file = open("data.txt", "r")
 segments = file.read().splitlines()
 contain = 0
 
 
 def is_individual1_in_individual_b(contain, individual1, individual2):
+    check = any(number in individual1 for number in individual2)
+    print(individual1[0], individual1[1] , individual2[0], individual2[1])
+    same1 = individual1[0] == individual1[1]
+    same2 = individual2[0] == individual2[1]
 
-    check = any(item in individual1 for item in individual2)
     if check is True:
         print("some is same")
-        if individual1[0] == individual1[1]:
-            if individual1[0] > individual2[0] and individual1[0] <= individual2[1]:
-                print("its inside")
+        if same1 is True:
+            print("same1")
+            if individual1[0] >= individual2[0]:
+                print(individual1, "is inside", individual2)
                 contain += 1
-            else:
-                print("inte i")
-        return print("The list {} contains some elements of the list {}".format(individual1, individual2))
+        if same2 is True:
+            print("same2")
+            if individual2[0] <= individual1[0]:
+                print(individual1, "is inside", individual2)
+                contain += 1
+    else:
+        print("inte i")
+    return print("The list {} contains some elements of the list {}".format(individual1, individual2))
 
 
 def beforeorafter(contain, individual1, individual2):
