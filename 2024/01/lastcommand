@@ -1,0 +1,1 @@
+for a in $(bash script.sh); do result=$(($result + $a)); echo $result; done
